@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DeviceRequest;
+use App\Http\Requests\PushFCMRequest;
 use App\Http\Resources\Devices;
 use App\Services\DeviceService;
 use Illuminate\Http\Request;
@@ -38,6 +39,13 @@ class HomeController extends Controller
     public function exportCsv()
     {
         return $this->device_service->exportCsv();
+    }
+
+    public function pushFCM(PushFCMRequest $request)
+    {
+        $this->device_service->pushFCM($request);
+        return redirect('home');
+
     }
 
 }

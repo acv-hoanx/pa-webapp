@@ -11,6 +11,8 @@ namespace App\Services;
 use App\Devices;
 use App\Http\Requests\DeviceRequest;
 use App\Http\Requests\DeviceTokenPushRequest;
+use App\Http\Requests\PushFCMRequest;
+use Illuminate\Support\Facades\DB;
 
 class DeviceService extends BaseService
 {
@@ -86,5 +88,14 @@ class DeviceService extends BaseService
         ]);
 
         return $deviceObj;
+    }
+
+    public function pushFCM(PushFCMRequest $request)
+    {
+        $token = DB::table('devices')->select('token_push')
+            ->where('token_push', '<>', null)
+            ->pluck('token_push')->toArray();
+
+        fcm_push($token, $request->input('title'), $request->input('content'));
     }
 }

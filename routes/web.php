@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home/exportCsv', 'HomeController@exportCsv')->name('exportCsv');
+Route::post('/home/pushFCM', 'HomeController@pushFCM')->name('pushFCM');

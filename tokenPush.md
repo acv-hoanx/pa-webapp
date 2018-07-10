@@ -1,4 +1,4 @@
-# Add device
+# Update token push
 
 
 **URL** : `/api/device/token/push`
