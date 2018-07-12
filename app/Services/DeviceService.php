@@ -55,7 +55,7 @@ class DeviceService extends BaseService
     public function exportCsv()
     {
         $dataExport = [
-            0 => ['id', 'device_name', 'uuid', 'adid', 'os', 'version_app', 'created_at']
+            0 => ['id', 'デバイス名', 'UDID', 'ADID', 'OS', 'アプリバージョン', 'インストール日']
         ];
         $deviceObj  = Devices::all();
         if ($deviceObj->count()) {
@@ -72,7 +72,7 @@ class DeviceService extends BaseService
             }
         }
 
-        return export_csv($dataExport, 'device');
+        return export_csv($dataExport, 'ADID情報');
     }
 
     /**
